@@ -1,9 +1,11 @@
 const express = require('express')
 const app = express()
 const db = require('./db')
+require('dotenv').config();
 
 const bodyParser = require('body-parser')
 app.use(bodyParser.json());  // doing this, it will store converted data into req.body 
+const PORT = process.env.PORT || 3000;
 
 //import routers
 const personRoutes = require('./routes/personRoutes')
@@ -19,7 +21,7 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server is live now");
 })
 
