@@ -42,6 +42,7 @@ const personSchema = new mongoose.Schema({
     }
 });
 
+//save password in hashed format
 personSchema.pre('save', async function(next){
     const person = this;
     //hash the password only if it has been modified (or in new)
@@ -61,6 +62,7 @@ personSchema.pre('save', async function(next){
     }
 })
 
+//created a comparePassword function to validate the password
 personSchema.methods.comparePassword = async function (candidatePassword){
     try {
         // use bcrypt to compare theprovided password with the hashed password
